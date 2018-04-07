@@ -1,0 +1,25 @@
+<app-bookfilter (bookfilterEvent)="setBookNameFilter($event)" [filterName]="'Name'"></app-bookfilter>
+<app-bookfilter (bookfilterEvent)="setbookISBNFilter($event)" [filterName]="'ISBN'"></app-bookfilter>
+<br/>
+<table *ngIf="showBookinfo" class="table table-bordered">
+  <tr class="info">
+    <th>BookISBN</th>
+    <th>BookName</th>
+    <th>Author</th>
+    <th>Price</th>
+    <th>Publisher</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let book of books" class="success">
+    <td><button class="btn btn-info" (click)="showSingleBookInfo(book)">{{book.bookISBN}}</button></td>
+    <td>{{book.bookName}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.price}}</td>
+    <td>{{book.publisher}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<a (click)="toggleBookInfo()">Toggle the BookInfo</a>
+
+<app-siglebook [singleBookInfo]="singleBookInfo"></app-siglebook>
